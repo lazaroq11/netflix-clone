@@ -1,5 +1,5 @@
 import React from 'react';
-import '../components/MovieRow.css';
+import './MovieRow.css';
 //o export default recebe o title e o items que foi definido no Tmdb.js
 export default ({title, items}) => {
     return(

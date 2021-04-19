@@ -2,14 +2,17 @@ import React, { useEffect, useState, } from 'react'
 import Tmdb from './Tmdb'
 import MovieRow from './components/MovieRow'
 import FeaturedMovie from './components/FeaturedMovie'
+import Header from './components/Header'
 import './App.css'
 
 
 export default () => {
+
+    
  
   const [movieList, setMovieList] = useState([]);
   const [featuredData, setFeaturedData] = useState(null); //começa o featuredData que é o filme de destaque como nulo
-
+  const[blackHeader,setBlackHeader] = useState(false); //Alterna a cor do cabeçalho 
 
   useEffect(() =>{      /*O useEffect serve basicamente para que quando a tela for carregada*/
                         /*ele execute o que está dentro dessa função */       
@@ -32,6 +35,24 @@ export default () => {
      loadAll();                                                            
 
   },[]);
+
+  useEffect(() => {
+
+    const scrollListener = () =>{
+      if(window.scrollY >10){
+          setBlackHeader(true)
+      }else{
+          setBlackHeader(false);
+      }
+
+    }
+
+    window.addEventListener('scroll',scrollListener);
+
+    return()=>{
+        window.removeEventListener('scroll',scrollListener);
+    }
+  },[])
    
   return (
     //basicamente, criamos a seção lists com a função map que vai mapear as categorias dos filmes
@@ -39,6 +60,8 @@ export default () => {
     //dos filmes como foi definido la e o item.items vai exibir os filmes. O key no MovieRow é um item necessário para todo map.
     //caso eu não adicione a key ele não deixará de funcionar porém ocorrerá um erro ao inspecionar o elemento
     <div className="page">
+
+       <Header black={blackHeader}/>
 
        {featuredData &&
        
