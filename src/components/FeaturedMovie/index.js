@@ -1,7 +1,7 @@
 import React from 'react';
 import './FeaturedMovie.css'
 
-export default ({item}) => {
+const FeaturedMovie =  ({item}) => {
 
     let firstDate = new Date(item.first_air_date);//pega somente o ano do  filme
 
@@ -41,3 +41,5 @@ export default ({item}) => {
        </section>
     )
 }
+
+export default FeaturedMovie;

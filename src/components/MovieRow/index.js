@@ -1,7 +1,7 @@
 import React from 'react';
 import './MovieRow.css';
 //o export default recebe o title e o items que foi definido no Tmdb.js
-export default ({title, items}) => {
+const MovieRow = ({title, items}) => {
     return(
        <div>
            <div className="movieRow">
@@ -20,3 +20,5 @@ export default ({title, items}) => {
 </div>
     );
 }
+
+export default MovieRow;
